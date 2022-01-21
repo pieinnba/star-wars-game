@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">   
+    <title>star wars game</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background">
+            <img src="/img/background-img.png" alt="" class="background-img">
+        </div>
+        
+        <div class="screen" >
+            <div class="start-screen">
+                <h1 class="start-screen-title">star wars</h1>
+                <h2 class="start-screen-subtitle">game</h2>
+                <p class="start-screen-message">click on screen to start game</p> 
+            </div>
+
+            <div class="difficult-block">
+                <h2 class="title">choose difficult</h2>
+                <div class="difficult-buttons">
+                    <button class="difficult-button" data-lvl-of-difficult="easy">easy</button>
+                    <button class="difficult-button" data-lvl-of-difficult="mid">meduim</button>
+                    <button class="difficult-button" data-lvl-of-difficult="hard">hard</button>
+                </div>
+            </div> 
+
+            <div class="game-space"></div>
+
+            <div class="victory-screen">
+                <h2 class="title">victory</h2>
+                <div class="play-again-block">
+                    <button class="play-again-button">play again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="fieldCreade.js"></script>
+</body>
+</html>
