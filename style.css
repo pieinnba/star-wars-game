@@ -39,7 +39,7 @@
 @font-face {
   font-family: 'Star Wars Font'; 
   src: local('sw-font'),
-  url(/fonts/sw-font.ttf); 
+  url(fonts/sw-font.ttf); 
 }
 
 body {
