@@ -19,7 +19,8 @@ function aminationItem (hideItem, openItem) {
     hideItem.style.opacity = 0
     setTimeout(function () {
         openItem.style.top = 0
-        hideItem.style.top = 50 + 'vh'
+        // hideItem.style.top = 50 + 'vh'
+        hideItem.style.top = 100 + '%'
     }, 500)
 }
 
@@ -179,7 +180,7 @@ function checkElem () {
 function congrats () {
     aminationItem (gameCourt, victoryScreen)
     //ОТОБРАЖЕНИЕ КНОПКИ "СЫГРАТЬ ЕЩЕ"
-    victoryScreen.children[1].style.display = 'block'
+    victoryScreen.children[1].style.display = 'flex'
     setTimeout(function () {
         victoryScreen.children[1].style.opacity = 1
         playAgain.addEventListener('click', toStart)
