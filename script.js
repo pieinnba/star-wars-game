@@ -1,11 +1,13 @@
 const gameCourt = document.querySelector('.game-space')
 const difficultBlock = document.querySelector('.difficult-block')
 const startScreen = document.querySelector('.start-screen')
+const background = document.querySelector('.background')
+const flipPhone = document.querySelector('.flip-phone')
 const imgMass = ["img/1.png", "img/2.png", "img/3.png", "img/4.png", "img/5.png", "img/6.png", "img/7.png", "img/8.png", "img/9.png", "img/10.png"]
 const difficult = {
-    easy: ['game-space-easy', 6],
-    mid: ['game-space-mid', 12],
-    hard: ['game-space-hard', 20]
+    easy: ['game-space-easy', 6, 1500],
+    mid: ['game-space-mid', 12, 2500],
+    hard: ['game-space-hard', 20, 4500]
 }
 const difficultButtons = document.querySelector('.difficult-buttons')
 const victoryScreen = document.querySelector('.victory-screen')
@@ -37,9 +39,10 @@ startScreen.addEventListener('click', function () {
 }) 
 
 //СОЗДАНИЕ СЕТКИ ИГРЫ И ЗАПОЛНЕНИЕ ЕЁ ЭЛЕМЕНТАМИ
+let difficultValue = ''
 function chooseMode (lvl) {
     //ЗНАЧЕНИЯ СЛОЖНОСТИ
-    let difficultValue = difficult[lvl];
+    difficultValue = difficult[lvl];
     //ПОДРЕЗКА МАССИВА
     for (let i = 0; i < difficultValue[1]/2; i++){
         gameImgMass.push(imgMass[i])
@@ -94,7 +97,7 @@ function fullGameCourt () {
             gameCourt.children[i].lastChild.style.transform = 'rotateY(0deg)'
             gameCourt.children[i].firstChild.style.transform = 'rotateY(180deg)'
         }
-    }, 3000)
+    }, difficultValue[2])
     aminationItem (difficultBlock, gameCourt)
     //СЛУШАТЕЛЬ НА ЭЛЕМЕНТАХ
     gameCourt.addEventListener('click', clickElem)
@@ -164,7 +167,7 @@ function checkElem () {
         count = 0
         checkMass = []
         gameCourt.addEventListener('click', clickElem)
-        }, 2000)
+        }, 1100)
     }
     //ПРОВЕРЯЕМ ВСЕ ЛИ ЭЛЕМЕНТЫ ПЕРЕВЕРНУТЫ
     if (winCount == gameImgMass.length) {
@@ -172,7 +175,7 @@ function checkElem () {
         winCount = 0
         setTimeout(function () {
             congrats()
-        }, 3000)
+        }, 2000)
     }
 }
 
@@ -180,9 +183,9 @@ function checkElem () {
 function congrats () {
     aminationItem (gameCourt, victoryScreen)
     //ОТОБРАЖЕНИЕ КНОПКИ "СЫГРАТЬ ЕЩЕ"
-    victoryScreen.children[1].style.display = 'flex'
+    victoryScreen.children[2].style.display = 'flex'
     setTimeout(function () {
-        victoryScreen.children[1].style.opacity = 1
+        victoryScreen.children[2].style.opacity = 1
         playAgain.addEventListener('click', toStart)
     }, 2000)
 }
@@ -197,8 +200,39 @@ function toStart() {
     //ВКЛЮЧЕНИЕ ЭКРАНА ВЫБОРА СЛОЖНОСТИ
     difficultButtons.addEventListener('click', clickDiffcult)
     setTimeout(function () {
-        victoryScreen.children[1].style.display = 'none'
-        victoryScreen.children[1].style.opacity = 0
+        victoryScreen.children[2].style.display = 'none'
+        victoryScreen.children[2].style.opacity = 0
     }, 500)
     aminationItem (victoryScreen, difficultBlock)
 }
+
+//ФУНКЦИЯ ВЫБОРА РЕЖИМА ОТОБРАЖЕНИЯ ИГРЫ
+function chooseVersionOfGame () {
+    if(document.documentElement.clientWidth <= 1200){
+        //ПОРТАТИВНАЯ ВЕРСИЯ
+        background.firstElementChild.hidden = true
+        background.lastElementChild.hidden = false
+        difficultButtons.lastElementChild.disabled = true
+        //ВКЛЮЧЕНИЕ ПРОВЕРКИ НА ОРИЕНТАЦИЮ ЭКРАНА
+        flipDevice();
+    } else {
+        //ДЕСКТОП ВЕРСИЯ
+        background.firstElementChild.hidden = false
+        background.lastElementChild.hidden = true
+        difficultButtons.lastElementChild.disabled = false
+    }
+}
+chooseVersionOfGame ()
+//СЛУШАТЕЛЬ ИЗМЕНЕНИЯ РАЗМЕРА ОКНА БРАУЗЕРА
+window.addEventListener('resize', chooseVersionOfGame);
+
+//ФУНКЦИЯ ПРОВЕРКИ ОРИЕНТАЦИИ ЭКРАНА
+function flipDevice() {
+    window.screen.orientation.type == 'portrait-primary' ?
+    flipPhone.style.display = 'flex' :
+    flipPhone.style.display = 'none'
+}
+
+
+
+
