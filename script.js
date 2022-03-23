@@ -208,9 +208,10 @@ function toStart() {
 //ФУНКЦИЯ ВЫБОРА РЕЖИМА ОТОБРАЖЕНИЯ ИГРЫ
 function chooseVersionOfGame () {
     // console.log(window.DeviceOrientationEvent);
-    console.log(window.innerWidth);
+    console.log(window.screen.width);
     // if(document.documentElement.clientWidth <= 1200){
-    if(window.innerWidth <= 1200){
+    // if(window.innerWidth <= 1200){
+    if(window.screen.width <= 1200){
         //ПОРТАТИВНАЯ ВЕРСИЯ
         background.firstElementChild.hidden = true
         background.lastElementChild.hidden = false
@@ -226,8 +227,8 @@ function chooseVersionOfGame () {
 }
 chooseVersionOfGame ()
 //СЛУШАТЕЛЬ ИЗМЕНЕНИЯ РАЗМЕРА ОКНА БРАУЗЕРА
-// window.addEventListener('resize', chooseVersionOfGame);
-screen.orientation.addEventListener('change', chooseVersionOfGame);
+window.addEventListener('resize', chooseVersionOfGame);
+// screen.orientation.addEventListener('change', chooseVersionOfGame);
 
 //ФУНКЦИЯ ПРОВЕРКИ ОРИЕНТАЦИИ ЭКРАНА
 // function flipDevice() {
@@ -245,7 +246,6 @@ function flipDevice() {
         flipPhone.style.display = 'none'
     }
 }
-
 
 
 
