@@ -21,7 +21,6 @@ function aminationItem (hideItem, openItem) {
     hideItem.style.opacity = 0
     setTimeout(function () {
         openItem.style.top = 0
-        // hideItem.style.top = 50 + 'vh'
         hideItem.style.top = 100 + '%'
     }, 500)
 }
@@ -208,7 +207,10 @@ function toStart() {
 
 //ФУНКЦИЯ ВЫБОРА РЕЖИМА ОТОБРАЖЕНИЯ ИГРЫ
 function chooseVersionOfGame () {
-    if(document.documentElement.clientWidth <= 1200){
+    // console.log(window.DeviceOrientationEvent);
+    console.log(window.innerWidth);
+    // if(document.documentElement.clientWidth <= 1200){
+    if(window.innerWidth <= 1200){
         //ПОРТАТИВНАЯ ВЕРСИЯ
         background.firstElementChild.hidden = true
         background.lastElementChild.hidden = false
@@ -224,13 +226,24 @@ function chooseVersionOfGame () {
 }
 chooseVersionOfGame ()
 //СЛУШАТЕЛЬ ИЗМЕНЕНИЯ РАЗМЕРА ОКНА БРАУЗЕРА
-window.addEventListener('resize', chooseVersionOfGame);
+// window.addEventListener('resize', chooseVersionOfGame);
+screen.orientation.addEventListener('change', chooseVersionOfGame);
 
 //ФУНКЦИЯ ПРОВЕРКИ ОРИЕНТАЦИИ ЭКРАНА
+// function flipDevice() {
+//     window.screen.orientation.type == 'portrait-primary' ?
+//     flipPhone.style.display = 'flex' :
+//     flipPhone.style.display = 'none'
+// }
+
 function flipDevice() {
-    window.screen.orientation.type == 'portrait-primary' ?
-    flipPhone.style.display = 'flex' :
-    flipPhone.style.display = 'none'
+    if (window.screen.orientation.type == 'portrait-primary') {
+        console.log(window.screen.orientation.type);
+        flipPhone.style.display = 'flex'
+    } else {
+        console.log(window.screen.orientation.type);
+        flipPhone.style.display = 'none'
+    }
 }
 
 
