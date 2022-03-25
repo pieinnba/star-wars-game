@@ -212,8 +212,8 @@ window.addEventListener('click', () => {
 
 //ФУНКЦИЯ ВЫБОРА РЕЖИМА ОТОБРАЖЕНИЯ ИГРЫ
 function chooseVersionOfGame () {
-    // console.log(window.DeviceOrientationEvent);
-    console.log(window.screen.width);
+    console.log('height: ', window.screen.height);
+    console.log('width: ', window.screen.width);
     // if(document.documentElement.clientWidth <= 1200){
     // if(window.innerWidth <= 1200){
     if(window.screen.width <= 1200){
@@ -246,11 +246,11 @@ function flipDevice() {
     // if (window.screen.orientation.type == 'portrait-primary') {
     if (window.screen.height > window.screen.width) {
         // console.log(window.screen.orientation.type);
-        console.log(window.screen.height > window.screen.width);
+        console.log('wrong ori | ', window.screen.height > window.screen.width);
         flipPhone.style.display = 'flex'
     } else {
         // console.log(window.screen.orientation.type);
-        console.log(window.screen.height > window.screen.width);
+        console.log('true ori | ', window.screen.height > window.screen.width);
         flipPhone.style.display = 'none'
     }
 }
