@@ -205,6 +205,11 @@ function toStart() {
     aminationItem (victoryScreen, difficultBlock)
 }
 
+window.addEventListener('click', () => {
+    1();
+    2();
+})
+
 //ФУНКЦИЯ ВЫБОРА РЕЖИМА ОТОБРАЖЕНИЯ ИГРЫ
 function chooseVersionOfGame () {
     // console.log(window.DeviceOrientationEvent);
@@ -238,11 +243,14 @@ window.addEventListener('resize', chooseVersionOfGame);
 // }
 
 function flipDevice() {
-    if (window.screen.orientation.type == 'portrait-primary') {
-        console.log(window.screen.orientation.type);
+    // if (window.screen.orientation.type == 'portrait-primary') {
+    if (window.screen.height > window.screen.width) {
+        // console.log(window.screen.orientation.type);
+        console.log(window.screen.height > window.screen.width);
         flipPhone.style.display = 'flex'
     } else {
-        console.log(window.screen.orientation.type);
+        // console.log(window.screen.orientation.type);
+        console.log(window.screen.height > window.screen.width);
         flipPhone.style.display = 'none'
     }
 }
