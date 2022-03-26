@@ -247,4 +247,3 @@ function flipDevice(mobileScreenHeight, mobileScreenWidth) {
     flipPhone.style.display = 'flex' :
     flipPhone.style.display = 'none'
 }
-
