@@ -211,9 +211,27 @@ window.addEventListener('click', () => {
 })
 
 //ФУНКЦИЯ ВЫБОРА РЕЖИМА ОТОБРАЖЕНИЯ ИГРЫ
-function chooseVersionOfGame () {
+function chooseVersionOfGame (event) {
+    console.log('-----------------WINDOW-----------------');
     console.log('height: ', window.screen.height);
     console.log('width: ', window.screen.width);
+    console.log('availHeight: ', window.screen.availHeight);
+    console.log('availWidth: ', window.screen.availWidth);
+    console.log('outerHeight: ', window.outerHeight);
+    console.log('outerWidth: ', window.outerWidth);
+    console.dir(window)
+    console.log('-----------------WINDOW-----------------');
+    if (event) {
+        console.log('-----------------EVENT-----------------');
+    console.log('innerHeight: ', event.target.innerHeight);
+    console.log('innerWidth: ', event.target.innerWidth);
+    console.log('outerHeight: ', event.target.outerHeight);
+    console.log('outerWidth: ', event.target.outerWidth);
+    console.log('availHeight: ', event.target.screen.availHeight);
+    console.log('availWidth: ', event.target.screen.availWidth);
+    console.dir(event);
+    console.log('-----------------EVENT-----------------');
+    }
     // if(document.documentElement.clientWidth <= 1200){
     // if(window.innerWidth <= 1200){
     if(window.screen.width <= 1200){
@@ -246,11 +264,11 @@ function flipDevice() {
     // if (window.screen.orientation.type == 'portrait-primary') {
     if (window.screen.height > window.screen.width) {
         // console.log(window.screen.orientation.type);
-        console.log('wrong ori | ', window.screen.height > window.screen.width);
+        // console.log('wrong ori | ', window.screen.height > window.screen.width);
         flipPhone.style.display = 'flex'
     } else {
         // console.log(window.screen.orientation.type);
-        console.log('true ori | ', window.screen.height > window.screen.width);
+        // console.log('true ori | ', window.screen.height > window.screen.width);
         flipPhone.style.display = 'none'
     }
 }
